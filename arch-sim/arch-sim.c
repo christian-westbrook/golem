@@ -9,7 +9,6 @@
 // No Op       | 0           | Performs no work.
 
 // TODO
-// - Run an instruction
 // - Confirm that the nothing register is restricted to representing
 //   a one-bit register
 // - Confirm that a no op makes no changes
@@ -43,5 +42,6 @@ void test_running_an_instruction() {
 
 int main() {
     test_loading_starting_state_into_nothing_register();
+    test_running_an_instruction();
     return 0;
 }
