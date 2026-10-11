@@ -64,10 +64,21 @@ void test_run_only_accepts_valid_instructions() {
     assert(run(1) == 1);
 }
 
+void test_no_op_doesnt_mutate_registers() {
+    load_nothing_register(0);
+    run(0);
+    assert(nothing_register == 0);
+
+    load_nothing_register(1);
+    run(0);
+    assert(nothing_register == 1);
+}
+
 int main() {
     test_loading_starting_state_into_nothing_register();
     test_nothing_register_is_one_bit();
     test_running_an_instruction();
     test_run_only_accepts_valid_instructions();
+    test_no_op_doesnt_mutate_registers();
     return 0;
 }
