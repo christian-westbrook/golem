@@ -9,15 +9,24 @@
 // No Op       | 0           | Performs no work.
 
 // TODO
-// - Load a starting value into the Nothing register
+// - Run an instruction
+// - Confirm that the nothing register is restricted to representing
+//   a one-bit register
 // - Confirm that a no op makes no changes
+// - Separate test code from model code
 
 #include <assert.h>
 
 short int nothing_register;
 
-void load_nothing_register(int x) {
-    nothing_register = x;
+// Public Interface
+
+void load_nothing_register(int value) {
+    nothing_register = value;
+}
+
+void run(int x) {
+    ;
 }
 
 // Tests
@@ -26,6 +35,10 @@ void test_loading_starting_state_into_nothing_register() {
     assert(nothing_register == 0);
     load_nothing_register(1);
     assert(nothing_register == 1);
+}
+
+void test_running_an_instruction() {
+    run(0);
 }
 
 int main() {
