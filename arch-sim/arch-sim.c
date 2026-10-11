@@ -9,7 +9,6 @@
 // No Op       | 0           | Performs no work.
 
 // TODO
-// - Confirm that the only valid instruction is a 0
 // - Confirm that a no op makes no changes
 // - Separate test code from model code
 // - Separate architecture model from the main module
@@ -31,8 +30,12 @@ int load_nothing_register(int value) {
     return 1;
 }
 
-void run(int x) {
-    ;
+// Runs an instruction.
+// Returns 0 on success, 1 otherwise.
+int run(int instruction) {
+    if (instruction == 0)
+        return 0;
+    return 1;
 }
 
 // Tests
@@ -55,9 +58,16 @@ void test_running_an_instruction() {
     run(0);
 }
 
+void test_run_only_accepts_valid_instructions() {
+    assert(run(-1) == 1);
+    assert(run(0) == 0);
+    assert(run(1) == 1);
+}
+
 int main() {
     test_loading_starting_state_into_nothing_register();
     test_nothing_register_is_one_bit();
     test_running_an_instruction();
+    test_run_only_accepts_valid_instructions();
     return 0;
 }
